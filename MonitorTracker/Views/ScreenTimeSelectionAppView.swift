@@ -22,39 +22,47 @@ struct ScreenTimeSelectionAppView: View {
                 
                 if authorizationStatus == .approved {
                     
-                    Button {
-                        
-                    } label: {
-                        Text("Select Apps")
-                            .font(.headline)
-                    }
-                    .familyActivityPicker(
-                        isPresented: $familyActivityPickerPresented,
-                        selection: $familyActivitySelection)
+                    appSelectionView
                     
                 } else {
                     
-                    VStack(spacing: 20) {
-                        
-                        Text("Family Controls Access Required")
-                            .font(.headline)
-                        
-                        Text("This app needs access to Family Controls to help you monitor and manage screen time for selected apps.")
-                            .multilineTextAlignment(.leading)
-                        
-                        Button(action: requestAuthorization) {
-                            Text("Grant Permission")
-                                .font(.headline)
-                        }
-                        
-                    }
-                    .padding()
+                    requestAccessView
                     
                 }
             }
             .navigationTitle("App Selection")
             .onAppear(perform: updateAuthorizationStatus)
         }
+    }
+    
+    var appSelectionView: some View {
+        Button {
+            familyActivityPickerPresented.toggle()
+        } label: {
+            Text("Select Apps")
+                .font(.headline)
+        }
+        .familyActivityPicker(
+            isPresented: $familyActivityPickerPresented,
+            selection: $familyActivitySelection)
+    }
+    
+    var requestAccessView: some View {
+        VStack(spacing: 20) {
+            
+            Text("Family Controls Access Required")
+                .font(.headline)
+            
+            Text("This app needs access to Family Controls to help you monitor and manage screen time for selected apps.")
+                .multilineTextAlignment(.leading)
+            
+            Button(action: requestAuthorization) {
+                Text("Grant Permission")
+                    .font(.headline)
+            }
+            
+        }
+        .padding()
     }
     
     private func updateAuthorizationStatus() {
