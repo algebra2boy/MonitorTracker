@@ -8,6 +8,7 @@
 import SwiftUI
 import FamilyControls
 import DeviceActivity
+import ManagedSettings
 
 struct ScreenTimeSelectionAppView: View {
     
@@ -26,6 +27,19 @@ struct ScreenTimeSelectionAppView: View {
                 if authorizationStatus == .approved {
                     
                     appSelectionView
+                    
+                    List {
+                        ForEach(Array(monitorViewModel.selection.applications), id: \.hashValue) { application in
+                            if let token = application.token {
+                                Label(token)
+                            }
+                            
+                            if let localizedDisplayName = application.localizedDisplayName {
+                                Text(localizedDisplayName)
+                            }
+                        }
+                    }
+                    .scrollContentBackground(.hidden) // hide default background
                     
                     Button {
                         startMonitoring()
