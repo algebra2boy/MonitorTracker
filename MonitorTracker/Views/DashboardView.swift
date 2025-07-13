@@ -12,8 +12,9 @@ import DeviceActivityMonitorTracker
 
 struct DashboardView: View {
     
-    let familyActivitySelection: FamilyActivitySelection
+    @Environment(\.dismiss) var dismiss
     
+    @Binding var familyActivitySelection: FamilyActivitySelection
     
     var body: some View {
         NavigationStack {
@@ -21,11 +22,11 @@ struct DashboardView: View {
             VStack {
                 
                 DeviceActivityReport(
-                    DeviceActivityReport.Context(rawValue: "DeviceReportActivity"), // the context of your extension
+                    DeviceActivityReport.Context(rawValue: "Total Activity"),
                     filter: DeviceActivityFilter(
-                        segment: .hourly(during: DateInterval(start: Date(timeIntervalSinceNow: 60 * 60 * 24), end: Date())),
+                        segment: .weekly(during: DateInterval(start: .distantPast, end: .distantFuture)),
                         users: .all,
-                        devices: .init([.iPhone]),
+                        devices: .all,
                         applications: familyActivitySelection.applicationTokens,
                         categories: familyActivitySelection.categoryTokens,
                         webDomains: familyActivitySelection.webDomainTokens
@@ -36,11 +37,20 @@ struct DashboardView: View {
             .padding()
             .navigationTitle("Dashboard")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Return")
+                    }
+                }
+            }
         }
     }
     
 }
 
 #Preview {
-    DashboardView(familyActivitySelection: .init())
+    DashboardView(familyActivitySelection: .constant(.init()))
 }

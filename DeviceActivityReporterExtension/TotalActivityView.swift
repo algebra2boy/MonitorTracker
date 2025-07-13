@@ -1,8 +1,8 @@
 //
 //  TotalActivityView.swift
-//  DeviceActivityMonitorTracker
+//  DeviceActivityReporterExtension
 //
-//  Created by Yongye Tan on 7/12/25.
+//  Created by Yongye Tan on 7/13/25.
 //
 
 import SwiftUI
