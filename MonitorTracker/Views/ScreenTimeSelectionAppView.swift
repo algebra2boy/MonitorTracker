@@ -49,6 +49,12 @@ struct ScreenTimeSelectionAppView: View {
                     }
                     .disabled(monitorViewModel.selection.applications.isEmpty && monitorViewModel.selection.categoryTokens.isEmpty)
                     
+                    Button {
+                        dashBoardPresented.toggle()
+                    } label: {
+                        Text("Check Dashboard")
+                    }
+                    
                 } else {
                     
                     requestAccessView
