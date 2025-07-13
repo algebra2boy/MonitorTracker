@@ -29,31 +29,56 @@ struct ScreenTimeSelectionAppView: View {
                     appSelectionView
                     
                     List {
-                        ForEach(Array(monitorViewModel.selection.applications), id: \.hashValue) { application in
-                            if let token = application.token {
-                                Label(token)
-                            }
+                        
+                        Section {
                             
-                            if let localizedDisplayName = application.localizedDisplayName {
-                                Text(localizedDisplayName)
+                            ForEach(Array(monitorViewModel.selection.categories), id: \.hashValue) { category in
+                                if let token = category.token {
+                                    Label(token)
+                                }
+                                if let localizedDisplayName = category.localizedDisplayName {
+                                    Text(localizedDisplayName)
+                                }
+                            }
+                        } header: {
+                            if monitorViewModel.selection.categories.count > 0 {
+                                Text("Tracked Categories: \(monitorViewModel.selection.categories.count) in total")
+                            }
+                        }
+                        
+                        Section {
+                            
+                            ForEach(Array(monitorViewModel.selection.applications), id: \.hashValue) { application in
+                                if let token = application.token {
+                                    Label(token)
+                                }
+                                
+                                if let localizedDisplayName = application.localizedDisplayName {
+                                    Text(localizedDisplayName)
+                                }
+                            }
+                        } header: {
+                            if monitorViewModel.selection.applications.count > 0 {
+                                Text("Tracked Applications: \(monitorViewModel.selection.applications.count) in total")
                             }
                         }
                     }
                     .scrollContentBackground(.hidden) // hide default background
                     
                     Button {
-                        startMonitoring()
+                        // disable this function for since we just want to report screen time not triggering even
+                        // startMonitoring()
                         dashBoardPresented.toggle()
                     } label: {
                         Text("Start Monitoring")
                     }
-                    .disabled(monitorViewModel.selection.applications.isEmpty && monitorViewModel.selection.categoryTokens.isEmpty)
+//                    .disabled(monitorViewModel.selection.applications.isEmpty && monitorViewModel.selection.categoryTokens.isEmpty)
                     
-                    Button {
-                        dashBoardPresented.toggle()
-                    } label: {
-                        Text("Check Dashboard")
-                    }
+//                    Button {
+//                        dashBoardPresented.toggle()
+//                    } label: {
+//                        Text("Check Dashboard")
+//                    }
                     
                 } else {
                     
@@ -99,6 +124,8 @@ struct ScreenTimeSelectionAppView: View {
         .padding()
     }
     
+    /// Stretch Feature: trigger an event at a threshold
+    /// from now until 1 hour from now (threshold at 50th minute)
     private func startMonitoring() {
         
         // Schedules monitoring from now to 1 hour
@@ -125,6 +152,7 @@ struct ScreenTimeSelectionAppView: View {
                     )
                 ]
             )
+            print("I have started monitoring")
         } catch {
             print("failed to start monitoring: \(error)")
         }

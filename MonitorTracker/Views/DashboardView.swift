@@ -20,10 +20,11 @@ struct DashboardView: View {
             
             VStack {
                 
+                // just screen time for today
                 DeviceActivityReport(
                     DeviceActivityReport.Context(rawValue: "Total Activity"),
                     filter: DeviceActivityFilter(
-                        segment: .weekly(during: DateInterval(start: .distantPast, end: .distantFuture)),
+                        segment: .daily(during: Calendar.current.dateInterval(of: .day, for: .now)!),
                         users: .all,
                         devices: .all,
                         applications: familyActivitySelection.applicationTokens,

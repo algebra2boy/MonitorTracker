@@ -8,6 +8,7 @@
 import SwiftUI
 import DeviceActivity
 
+// [DeviceActivityData] -> [ActivitySegment] -> [CategoryActivity] -> [ApplicationActivity]
 struct TotalActivityView: View {
     
     let results: [DeviceActivityData]
@@ -26,7 +27,6 @@ struct TotalActivityView: View {
                 }
             }
         }
-        .ignoresSafeArea()
         .task {
             var activitySegments: [DeviceActivityData.ActivitySegment] = []
             for result in results {
@@ -88,7 +88,7 @@ extension TotalActivityView {
                 
                 Section {
                     ForEach(applications, id: \.hashValue) { application in
-                        NavigationLink(application.application.localizedDisplayName ?? "(N/A)") {
+                        NavigationLink(application.application.localizedDisplayName ?? "N/A") {
                             ApplicationView(application: application)
                         }
                     }
@@ -123,7 +123,7 @@ extension TotalActivityView {
                     }
                     
                     if let applicationName = application.application.localizedDisplayName {
-                        LabeledContent("application") {
+                        LabeledContent("Application") {
                             Text(applicationName)
                         }
                     }
