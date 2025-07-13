@@ -6,9 +6,48 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AEDE66282E2354C7005A62C6 /* DeviceActivityMonitorTracker.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = AEDE661C2E2354C7005A62C6 /* DeviceActivityMonitorTracker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AEDE66262E2354C7005A62C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEBD47CB2E1F6CDB0065C5C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEDE661B2E2354C7005A62C6;
+			remoteInfo = DeviceActivityMonitorTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AEDE662D2E2354C7005A62C6 /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				AEDE66282E2354C7005A62C6 /* DeviceActivityMonitorTracker.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AEBD47D32E1F6CDB0065C5C3 /* MonitorTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitorTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEDE661C2E2354C7005A62C6 /* DeviceActivityMonitorTracker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = DeviceActivityMonitorTracker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AEDE66292E2354C7005A62C6 /* Exceptions for "DeviceActivityMonitorTracker" folder in "DeviceActivityMonitorTracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AEDE661B2E2354C7005A62C6 /* DeviceActivityMonitorTracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AEBD47D52E1F6CDB0065C5C3 /* MonitorTracker */ = {
@@ -16,10 +55,25 @@
 			path = MonitorTracker;
 			sourceTree = "<group>";
 		};
+		AEDE661D2E2354C7005A62C6 /* DeviceActivityMonitorTracker */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AEDE66292E2354C7005A62C6 /* Exceptions for "DeviceActivityMonitorTracker" folder in "DeviceActivityMonitorTracker" target */,
+			);
+			path = DeviceActivityMonitorTracker;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AEBD47D02E1F6CDB0065C5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEDE66192E2354C7005A62C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				AEBD47D52E1F6CDB0065C5C3 /* MonitorTracker */,
+				AEDE661D2E2354C7005A62C6 /* DeviceActivityMonitorTracker */,
 				AEBD47D42E1F6CDB0065C5C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				AEBD47D32E1F6CDB0065C5C3 /* MonitorTracker.app */,
+				AEDE661C2E2354C7005A62C6 /* DeviceActivityMonitorTracker.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,10 +111,12 @@
 				AEBD47CF2E1F6CDB0065C5C3 /* Sources */,
 				AEBD47D02E1F6CDB0065C5C3 /* Frameworks */,
 				AEBD47D12E1F6CDB0065C5C3 /* Resources */,
+				AEDE662D2E2354C7005A62C6 /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AEDE66272E2354C7005A62C6 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				AEBD47D52E1F6CDB0065C5C3 /* MonitorTracker */,
@@ -69,6 +127,28 @@
 			productName = MonitorTracker;
 			productReference = AEBD47D32E1F6CDB0065C5C3 /* MonitorTracker.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AEDE661B2E2354C7005A62C6 /* DeviceActivityMonitorTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEDE662A2E2354C7005A62C6 /* Build configuration list for PBXNativeTarget "DeviceActivityMonitorTracker" */;
+			buildPhases = (
+				AEDE66182E2354C7005A62C6 /* Sources */,
+				AEDE66192E2354C7005A62C6 /* Frameworks */,
+				AEDE661A2E2354C7005A62C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AEDE661D2E2354C7005A62C6 /* DeviceActivityMonitorTracker */,
+			);
+			name = DeviceActivityMonitorTracker;
+			packageProductDependencies = (
+			);
+			productName = DeviceActivityMonitorTracker;
+			productReference = AEDE661C2E2354C7005A62C6 /* DeviceActivityMonitorTracker.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +161,9 @@
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					AEBD47D22E1F6CDB0065C5C3 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					AEDE661B2E2354C7005A62C6 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -100,12 +183,20 @@
 			projectRoot = "";
 			targets = (
 				AEBD47D22E1F6CDB0065C5C3 /* MonitorTracker */,
+				AEDE661B2E2354C7005A62C6 /* DeviceActivityMonitorTracker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AEBD47D12E1F6CDB0065C5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEDE661A2E2354C7005A62C6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +213,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AEDE66182E2354C7005A62C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AEDE66272E2354C7005A62C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEDE661B2E2354C7005A62C6 /* DeviceActivityMonitorTracker */;
+			targetProxy = AEDE66262E2354C7005A62C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AEBD47DF2E1F6CDD0065C5C3 /* Debug */ = {
@@ -306,6 +412,60 @@
 			};
 			name = Release;
 		};
+		AEDE662B2E2354C7005A62C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DeviceActivityMonitorTracker/DeviceActivityMonitorTracker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5H7526UKSL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeviceActivityMonitorTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DeviceActivityMonitorTracker;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algebra2boy.MonitorTracker.DeviceActivityMonitorTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AEDE662C2E2354C7005A62C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DeviceActivityMonitorTracker/DeviceActivityMonitorTracker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5H7526UKSL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeviceActivityMonitorTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DeviceActivityMonitorTracker;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.algebra2boy.MonitorTracker.DeviceActivityMonitorTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,6 +483,15 @@
 			buildConfigurations = (
 				AEBD47E22E1F6CDD0065C5C3 /* Debug */,
 				AEBD47E32E1F6CDD0065C5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEDE662A2E2354C7005A62C6 /* Build configuration list for PBXNativeTarget "DeviceActivityMonitorTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEDE662B2E2354C7005A62C6 /* Debug */,
+				AEDE662C2E2354C7005A62C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

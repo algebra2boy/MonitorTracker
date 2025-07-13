@@ -14,7 +14,7 @@ struct ScreenTimeSelectionAppView: View {
     @State private var familyActivitySelection: FamilyActivitySelection = .init()
     @State private var authorizationStatus: AuthorizationStatus = .notDetermined
     @State private var dashBoardPresented: Bool = false
-    
+        
     var body: some View {
         
         NavigationStack {
@@ -34,7 +34,7 @@ struct ScreenTimeSelectionAppView: View {
             .navigationTitle("App Selection")
             .onAppear(perform: updateAuthorizationStatus)
             .navigationDestination(isPresented: $dashBoardPresented) {
-                DashboardView()
+                DashboardView(familyActivitySelection: familyActivitySelection)
                 
             }
         }
@@ -53,6 +53,8 @@ struct ScreenTimeSelectionAppView: View {
         .onChange(of: familyActivitySelection) {
             // at least more than one app or category is selected
             if !familyActivitySelection.applicationTokens.isEmpty || !familyActivitySelection.categoryTokens.isEmpty {
+                                
+                // navigate to dashboard
                 dashBoardPresented.toggle()
             }
         }
