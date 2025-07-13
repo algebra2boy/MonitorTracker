@@ -82,8 +82,8 @@ extension TotalActivityView {
                     }
                 }
                 
-                LabeledContent("Total Activity Duration") {
-                    Text(String(describing: category.totalActivityDuration))
+                LabeledContent("Screen Time") {
+                    Text(category.totalActivityDuration.convertDoubleToHoursMinutes())
                 }
                 
                 Section {
@@ -118,8 +118,8 @@ extension TotalActivityView {
         var body: some View {
             List {
                 Section {
-                    LabeledContent("Total Activity Duration") {
-                        Text(String(describing: application.totalActivityDuration))
+                    LabeledContent("Screen Time") {
+                        Text(application.totalActivityDuration.convertDoubleToHoursMinutes())
                     }
                     
                     if let applicationName = application.application.localizedDisplayName {
@@ -134,4 +134,13 @@ extension TotalActivityView {
         }
     }
     
+}
+
+extension Double {
+    func convertDoubleToHoursMinutes() -> String {
+        let totalSeconds = Int(self)
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        return "\(hours)h \(minutes)m"
+    }
 }

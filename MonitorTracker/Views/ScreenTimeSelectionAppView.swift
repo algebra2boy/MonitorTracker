@@ -95,9 +95,10 @@ struct ScreenTimeSelectionAppView: View {
     
     private func startMonitoring() {
         
-        // Schedules monitoring from now to 24 hours later.
+        // Schedules monitoring from now to 1 hour
         let start = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: .now)
-        let end = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: .now.addingTimeInterval(60 * 60 * 24))
+        let end = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: .now.addingTimeInterval(60 * 60))
+        let threshold = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: .now.addingTimeInterval(50 * 60))
         
         let schedule = DeviceActivitySchedule(
             intervalStart: start,
@@ -114,7 +115,7 @@ struct ScreenTimeSelectionAppView: View {
                         applications: monitorViewModel.selection.applicationTokens,
                         categories: monitorViewModel.selection.categoryTokens,
                         webDomains: monitorViewModel.selection.webDomainTokens,
-                        threshold: DateComponents(hour: 1) // triggers an event if usage exceeds 1 hour (for now, we can ignore this)
+                        threshold: threshold // triggers an event if the total usage excceds the threshold
                     )
                 ]
             )
