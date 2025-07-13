@@ -28,58 +28,17 @@ struct ScreenTimeSelectionAppView: View {
                     
                     appSelectionView
                     
-                    List {
-                        
-                        Section {
-                            
-                            ForEach(Array(monitorViewModel.selection.categories), id: \.hashValue) { category in
-                                if let token = category.token {
-                                    Label(token)
-                                }
-                                if let localizedDisplayName = category.localizedDisplayName {
-                                    Text(localizedDisplayName)
-                                }
-                            }
-                        } header: {
-                            if monitorViewModel.selection.categories.count > 0 {
-                                Text("Tracked Categories: \(monitorViewModel.selection.categories.count) in total")
-                            }
-                        }
-                        
-                        Section {
-                            
-                            ForEach(Array(monitorViewModel.selection.applications), id: \.hashValue) { application in
-                                if let token = application.token {
-                                    Label(token)
-                                }
-                                
-                                if let localizedDisplayName = application.localizedDisplayName {
-                                    Text(localizedDisplayName)
-                                }
-                            }
-                        } header: {
-                            if monitorViewModel.selection.applications.count > 0 {
-                                Text("Tracked Applications: \(monitorViewModel.selection.applications.count) in total")
-                            }
-                        }
-                    }
-                    .scrollContentBackground(.hidden) // hide default background
+                    trackedCategoryOrAppView
                     
                     Button {
                         // disable this function for since we just want to report screen time not triggering even
                         // startMonitoring()
                         dashBoardPresented.toggle()
                     } label: {
-                        Text("Start Monitoring")
+                        Text("Dashboard")
                     }
 //                    .disabled(monitorViewModel.selection.applications.isEmpty && monitorViewModel.selection.categoryTokens.isEmpty)
-                    
-//                    Button {
-//                        dashBoardPresented.toggle()
-//                    } label: {
-//                        Text("Check Dashboard")
-//                    }
-                    
+                                        
                 } else {
                     
                     requestAccessView
@@ -104,6 +63,45 @@ struct ScreenTimeSelectionAppView: View {
         .sheet(isPresented: $dashBoardPresented) {
             DashboardView(familyActivitySelection: $monitorViewModel.selection)
         }
+    }
+    
+    var trackedCategoryOrAppView: some View {
+        List {
+            
+            Section {
+                
+                ForEach(Array(monitorViewModel.selection.categories), id: \.hashValue) { category in
+                    if let token = category.token {
+                        Label(token)
+                    }
+                    if let localizedDisplayName = category.localizedDisplayName {
+                        Text(localizedDisplayName)
+                    }
+                }
+            } header: {
+                if monitorViewModel.selection.categories.count > 0 {
+                    Text("Tracked Categories: \(monitorViewModel.selection.categories.count) in total")
+                }
+            }
+            
+            Section {
+                
+                ForEach(Array(monitorViewModel.selection.applications), id: \.hashValue) { application in
+                    if let token = application.token {
+                        Label(token)
+                    }
+                    
+                    if let localizedDisplayName = application.localizedDisplayName {
+                        Text(localizedDisplayName)
+                    }
+                }
+            } header: {
+                if monitorViewModel.selection.applications.count > 0 {
+                    Text("Tracked Applications: \(monitorViewModel.selection.applications.count) in total")
+                }
+            }
+        }
+        .scrollContentBackground(.hidden) // hide default background
     }
     
     var requestAccessView: some View {
@@ -152,7 +150,6 @@ struct ScreenTimeSelectionAppView: View {
                     )
                 ]
             )
-            print("I have started monitoring")
         } catch {
             print("failed to start monitoring: \(error)")
         }
