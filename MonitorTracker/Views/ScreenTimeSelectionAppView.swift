@@ -13,6 +13,7 @@ struct ScreenTimeSelectionAppView: View {
     @State private var familyActivityPickerPresented: Bool = false
     @State private var familyActivitySelection: FamilyActivitySelection = .init()
     @State private var authorizationStatus: AuthorizationStatus = .notDetermined
+    @State private var dashBoardPresented: Bool = false
     
     var body: some View {
         
@@ -32,6 +33,10 @@ struct ScreenTimeSelectionAppView: View {
             }
             .navigationTitle("App Selection")
             .onAppear(perform: updateAuthorizationStatus)
+            .navigationDestination(isPresented: $dashBoardPresented) {
+                DashboardView()
+                
+            }
         }
     }
     
@@ -45,6 +50,12 @@ struct ScreenTimeSelectionAppView: View {
         .familyActivityPicker(
             isPresented: $familyActivityPickerPresented,
             selection: $familyActivitySelection)
+        .onChange(of: familyActivitySelection) {
+            // at least more than one app or category is selected
+            if !familyActivitySelection.applicationTokens.isEmpty || !familyActivitySelection.categoryTokens.isEmpty {
+                dashBoardPresented.toggle()
+            }
+        }
     }
     
     var requestAccessView: some View {
