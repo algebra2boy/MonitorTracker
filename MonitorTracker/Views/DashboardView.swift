@@ -6,28 +6,22 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 struct DashboardView: View {
-    
     @State private var usageData: [AppUsageData] = []
-    
+        
     var body: some View {
         NavigationStack {
             VStack {
+                
                 if usageData.isEmpty {
                     emptyStateView
                 } else {
-                    
-//                    Section {
-//                        HStack {
-//                            Text("App usage")
-//                                .font(.title)
-//                            Spacer()
-//                        }
-//                        usageListView
-//                    }
-                    usageListView
+                    summaryView
                 }
+                
+                Spacer()
             }
             .padding()
             .navigationTitle("Dashboard")
@@ -48,11 +42,22 @@ struct DashboardView: View {
         }
     }
     
-    var usageListView: some View {
-        List {
-            ForEach(usageData, id: \.self) { data in
-                AppUsageRow(appData: data)
+    var summaryView: some View {
+        Section {
+            usageListView
+        } header: {
+            HStack {
+                Text("Application Usage")
+                    .font(.title2)
+                Spacer()
             }
+            
+        }
+    }
+    
+    var usageListView: some View {
+        ForEach(usageData, id: \.self) { data in
+            AppUsageRow(appData: data)
         }
     }
     
