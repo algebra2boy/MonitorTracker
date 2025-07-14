@@ -17,13 +17,15 @@ struct TotalActivityView: View {
     
     var body: some View {
         NavigationStack {
-            List(results, id: \.hashValue) { result in
+            List {
                 Section {
                     ForEach(activitySegments, id: \.hashValue) { segment in
-                        NavigationLink(String(describing: segment.hashValue)) {
+                        NavigationLink("\(results[0].lastUpdatedDate.formatted(date: .abbreviated, time: .omitted))") {
                             ActivitySegmentView(activitySegment: segment)
                         }
                     }
+                } header: {
+                    Text("Date")
                 }
             }
         }
