@@ -12,7 +12,7 @@ Monitor Tracker is an iOS application that utilizes Apple's Device Activity Moni
 
 The app uses `UserDefaults` to persist the user's app and category selections across launches. The selection is represented by the [`FamilyActivitySelection`](https://developer.apple.com/documentation/familycontrols/familyactivityselection) object. When the user updates their selection, it is encoded using `JSONEncoder` and saved to `UserDefaults`. On app launch, the selection is loaded and decoded using `JSONDecoder`.
 
-Relevant code can be found in [`MonitoringViewModel`](MonitorTracker/ViewModel/MonitorViewModel.swift):
+Relevant code can be found in [`MonitoringViewModel`](MonitorTracker/ViewModel/MonitorViewModel.swift)
 
 ## What is `FamilyActivitySelection`?
 
